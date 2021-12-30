@@ -6,6 +6,10 @@ OPENSEA_URL = "https://testnets.opensea.io/assets/{}/{}"
 
 
 def main():
+    deploy_and_create()
+
+
+def deploy_and_create():
     account = get_account()
     simple_collectable = SimpleCollectable.deploy({"from": account})
     tx = simple_collectable.createCollectable(sample_token_uri, {"from": account})
@@ -14,3 +18,4 @@ def main():
         f"Great! You can view your NFT at {OPENSEA_URL.format(simple_collectable.address, simple_collectable.tokenCounter()-1)}"
     )
     print("Please wait up to 20 minutes and hit the refresh metadata button")
+    return simple_collectable
