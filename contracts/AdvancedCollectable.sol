@@ -51,7 +51,7 @@ contract AdvancedCollectable is ERC721, VRFConsumerBase {
         emit breedAssigned(newTokenId, breed);
         address owner = requestIdToSender[requestId];
         _safeMint(owner, newTokenId); // msg.sender needs to be the caller of the collectable (owner)
-        tokenCounter += 1;
+        tokenCounter = tokenCounter + 1;
     }
 
     function setTokenURI(uint256 tokenId, string memory tokenURI) public {

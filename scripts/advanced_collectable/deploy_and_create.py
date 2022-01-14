@@ -21,9 +21,10 @@ def deploy_and_create():
         config["networks"][network.show_active()]["keyhash"],
         config["networks"][network.show_active()]["fee"],
         {"from": account},
-        publish_source=True,
+        # publish_source=True,
     )
     fund_with_link(advanced_collectable.address)
     creating_tx = advanced_collectable.createCollectable({"from": account})
     creating_tx.wait(1)
     print("New token has been created!")
+    return advanced_collectable, creating_tx
