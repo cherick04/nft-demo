@@ -1,4 +1,9 @@
-from scripts.helpful_scripts import get_account, OPENSEA_URL, get_contract
+from scripts.helpful_scripts import (
+    get_account,
+    OPENSEA_URL,
+    get_contract,
+    fund_with_link,
+)
 from brownie import AdvancedCollectable, network, config
 
 
@@ -16,4 +21,9 @@ def deploy_and_create():
         config["networks"][network.show_active()]["keyhash"],
         config["networks"][network.show_active()]["fee"],
         {"from": account},
+        publish_source=True,
     )
+    fund_with_link(advanced_collectable.address)
+    creating_tx = advanced_collectable.createCollectable({"from": account})
+    creating_tx.wait(1)
+    print("New token has been created!")
