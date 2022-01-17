@@ -6,6 +6,10 @@ OPENSEA_URL = "https://testnets.opensea.io/assets/{}/{}"
 BREED_MAPPING = {0: "PUG", 1: "SHIBA_INU", 2: "ST_BERNARD"}
 
 
+def get_breed(breed_number):
+    return BREED_MAPPING[breed_number]
+
+
 def get_account(index=None, id=None):
     # accounts[0]
     # accounts.add("env")
