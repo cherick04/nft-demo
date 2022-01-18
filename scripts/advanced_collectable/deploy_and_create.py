@@ -23,7 +23,7 @@ def deploy_and_create():
         {"from": account},
         # publish_source=True,  # Verifies contract on Etherscan
     )
-    fund_with_link(advanced_collectable.address)
+    fund_with_link(advanced_collectable)
     creating_tx = advanced_collectable.createCollectable({"from": account})
     creating_tx.wait(1)
     print("New token has been created!")
